@@ -1,0 +1,27 @@
+<h1>Scores#index</h1>
+<p>Find me in app/views/scores/index.html.erb</p>
+
+<p>
+	<%= link_to 'add_score', scores_path %>
+</p>
+
+
+<table>
+	<tr>
+		<th>Name/Id</th>
+		<th>Course/Id</th>
+		<th>hole1</th>
+		<th>hole2</th>
+		<th>hole3</th>
+	</tr>
+<% @scores.each do |s| %>
+	<tr>
+		<td><%= s.golfer_id %></td>
+		<td><%= s.course_id %>?</td>
+		<td><%= s.hole1 %></td>
+		<td><%= s.hole2 %></td>
+		<td><%= s.hole3 %></td> 
+	</tr>
+<% end %>
+
+</table>

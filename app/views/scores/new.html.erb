@@ -1,0 +1,12 @@
+<!-- app/views/scores/new.html.erb -->
+<h1> app/views/scores/new.html.erb </h1>
+
+
+<%= form_with model: @score do |s| %>
+	hole1: <%= s.number_field :hole1 %><br>
+	hole2: <%= s.number_field :hole2 %><br>
+	hole3: <%= s.number_field :hole3 %><br>
+	<%= s.submit %>
+<% end %>
+
+
