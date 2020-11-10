@@ -14,8 +14,14 @@ Rails.application.routes.draw do
 
 
 
-  get '/scores/index' => 'scores#index'
-  get '/scores' => 'scores#new'
-  post '/scores' => 'scores#create'
+  resources :scores
+
+  # get '/scores/index' => 'scores#index' #scores#index
+  # get '/scores/new' => 'scores#new' #scores#new
+  # post '/scores' => 'scores#create' #scores#create
+  # delete '/scores/:id' => 'scores#destroy' #scores#destroy
+  # get 'scores/:id' => 'scores#show' #scores#show
+  # get 'scores/:id/edit' => 'scores#edit' #scores#edit
+
 
 end

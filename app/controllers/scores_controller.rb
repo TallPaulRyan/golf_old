@@ -6,8 +6,16 @@ class ScoresController < ApplicationController
   	@scores = Score.all 
   end
 
+  def show
+  	@score = Score.find(params[:id])
+  end
+
   def new
   	@score = Score.new
+  end
+
+  def edit
+  	@score = Score.find(params[:id])
   end
 
   def create
@@ -19,7 +27,21 @@ class ScoresController < ApplicationController
   	end
   end
 
+  def update
+  	@score = Score.find(params[:id])
+
+  	if @score.update(score_params)
+  		redirect_to scores_path
+  	else
+  		render 'edit'
+  	end
+  end
+
   def destroy
+  	@score = Score.find(params[:id])
+  	@score.destroy
+
+  	redirect_to scores_path
   end
 
   private

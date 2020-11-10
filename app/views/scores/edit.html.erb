@@ -1,0 +1,18 @@
+<h1>Scores#index</h1>
+<p>Find me in app/views/scores/index.html.erb</p>
+<p>params: <%= params.inspect %></p>
+<p>@scores: <%= @scores.inspect %></p>
+
+
+<h1>Edit Score</h1>
+
+<%= form_with(model: @score) do |s| %>
+	<p>
+		hole1: <%= s.number_field :hole1 %><br>
+		hole2: <%= s.number_field :hole2 %><br>
+		hole3: <%= s.number_field :hole3 %><br>
+		<%= s.submit %>
+	</p>
+<% end %>
+
+<%= link_to "Scores", scores_path %>
