@@ -1,6 +1,6 @@
 class ScoresController < ApplicationController
   
-
+  before_action :authorize
 
   def index
   	@scores = Score.all 

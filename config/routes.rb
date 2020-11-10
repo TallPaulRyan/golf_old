@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/users' => 'users#new'
   post '/users' => 'users#create'
 
-
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -15,7 +14,6 @@ Rails.application.routes.draw do
 
 
   resources :scores
-
   # get '/scores/index' => 'scores#index' #scores#index
   # get '/scores/new' => 'scores#new' #scores#new
   # post '/scores' => 'scores#create' #scores#create
