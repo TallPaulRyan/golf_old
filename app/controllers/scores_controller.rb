@@ -1,9 +1,12 @@
+require 'pry'
+
 class ScoresController < ApplicationController
   
   before_action :authorize
 
   def index
-  	@scores = Score.all 
+  	@scores = Score.all
+    #binding.pry
   end
 
   def show
@@ -11,7 +14,9 @@ class ScoresController < ApplicationController
   end
 
   def new
+    #binding.pry
   	@score = Score.new
+    @courses = Course.new
   end
 
   def edit
@@ -20,7 +25,10 @@ class ScoresController < ApplicationController
 
   def create
   	@score = Score.new(score_params)
-  	if @score.save
+    @score[:user_id] = current_user.id
+    #binding.pry
+
+  	if @score.save!
   		redirect_to root_path
   	else
   		render 'new'
@@ -47,7 +55,7 @@ class ScoresController < ApplicationController
   private
 
   	def score_params
-  		params.require(:score).permit(:hole1,:hole2,:hole3)
+  		params.require(:score).permit(:user_id,:course_id,:hole_number,:hole_score)
   	end
 
 end

@@ -1,11 +1,12 @@
 <!-- app/views/scores/new.html.erb -->
 <h1> app/views/scores/new.html.erb </h1>
+<%= render 'monitor' %>
 
 
 <%= form_with model: @score do |s| %>
-	hole1: <%= s.number_field :hole1 %><br>
-	hole2: <%= s.number_field :hole2 %><br>
-	hole3: <%= s.number_field :hole3 %><br>
+	Course: <%= s.collection_select :course_id, Course.all, :id, :name %><br> 
+	hole: <%= s.number_field :hole_number %><br>
+	score: <%= s.number_field :hole_score %><br>
 	<%= s.submit %>
 <% end %>
 

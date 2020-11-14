@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
 
   resources :scores
+  
+  resources :courses do
+    resources :course_details, only: [:index, :new, :create, :destroy]
+  end
+
+
   # get '/scores/index' => 'scores#index' #scores#index
   # get '/scores/new' => 'scores#new' #scores#new
   # post '/scores' => 'scores#create' #scores#create

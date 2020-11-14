@@ -1,0 +1,12 @@
+<!-- app/view/courses/new.html.erb -->
+<h1> Create new course! </h1>
+
+<%= form_with model: @course do |f| %>
+	Course Name: <%= f.text_field :name %><br>
+	# of holes: <%= f.number_field :holes %><br>
+	Course Par: <%= f.number_field :par %>
+	<%= f.submit %>
+<% end %> 
+
+
+<%= link_to "Home", root_path %>

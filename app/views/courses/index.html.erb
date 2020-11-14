@@ -1,0 +1,21 @@
+<h1> Registered Courses </h1>
+
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>#Holes</th>
+		<th>Par</th>
+	</tr>
+	<% @courses.each do |course| %>
+		<tr>
+			<td><%= course.name %></td>
+			<td><%= course.holes %></td>
+			<td><%= course.par %></td>
+		</tr>
+	<% end %>
+
+</table>
+
+
+<%= link_to "Home", root_path %>

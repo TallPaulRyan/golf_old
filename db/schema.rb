@@ -10,19 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_224522) do
+ActiveRecord::Schema.define(version: 2020_11_10_223937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "scores", force: :cascade do |t|
-    t.integer "golfer_id"
-    t.integer "course_id"
-    t.integer "hole1"
-    t.integer "hole2"
-    t.integer "hole3"
+  create_table "course_details", force: :cascade do |t|
+    t.integer "hole_number"
+    t.integer "hole_par"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_details_on_course_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.integer "holes"
+    t.integer "par"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hole_number"
+    t.integer "hole_score"
+    t.bigint "course_id"
+    t.bigint "user_id"
+    t.index ["course_id"], name: "index_scores_on_course_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +52,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_224522) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "course_details", "courses"
+  add_foreign_key "scores", "courses"
+  add_foreign_key "scores", "users"
 end
