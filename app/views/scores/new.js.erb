@@ -1,0 +1,6 @@
+<% if params[:course].blank? %>
+	document.querySelector('#course-wrapper').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "hole") %>');
+<% else %>
+	document.querySelector('#course-wrapper').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "hole") %>');
+	document.querySelector('#course-layout').reset();
+<% end %>

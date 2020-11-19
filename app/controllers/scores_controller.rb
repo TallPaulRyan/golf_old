@@ -14,9 +14,19 @@ class ScoresController < ApplicationController
   end
 
   def new
-    #binding.pry
-  	@score = Score.new
-    @courses = Course.new
+    @score = Score.new
+    respond_to do |format|
+      if params[:course].blank?
+        @course = nil
+        format.html { render 'new' }
+      else
+        @course = Course.find(params[:course][:id])
+        # binding.pry
+        format.html { render 'new' }
+        format.js
+      end
+    end
+
   end
 
   def edit
@@ -27,12 +37,13 @@ class ScoresController < ApplicationController
   	@score = Score.new(score_params)
     @score[:user_id] = current_user.id
     #binding.pry
-
-  	if @score.save!
-  		redirect_to root_path
-  	else
-  		render 'new'
-  	end
+    respond_to do |format|
+    	if @score.save!
+    		format.html { redirect_to scores_path }
+    	else
+    		format.html { render 'new' } 
+    	end
+    end
   end
 
   def update

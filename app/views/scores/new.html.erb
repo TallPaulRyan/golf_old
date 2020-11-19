@@ -3,11 +3,24 @@
 <%= render 'monitor' %>
 
 
-<%= form_with model: @score do |s| %>
-	Course: <%= s.collection_select :course_id, Course.all, :id, :name %><br> 
-	hole: <%= s.number_field :hole_number %><br>
-	score: <%= s.number_field :hole_score %><br>
-	<%= s.submit %>
-<% end %>
+<%# For now, lets use 2 forms. One course form, and one score form %>
+
+<div>
+	<%= form_with scope: "course", method: :GET do |c| %>
+		<%= c.collection_select :id, Course.order(:name), :id, :name %>
+		<%= c.submit "Choose Course" %>
+	<% end %>
+</div>
+
+<br>
+<br>
+
+<div id="course-wrapper">
+	<% if @course %>
+		<%= form_with model: @score, id: "course-layout" do |s| %>
+			Hole: <%= render "hole" %>
+		<% end %>
+	<% end %>
+</div>
 
 
