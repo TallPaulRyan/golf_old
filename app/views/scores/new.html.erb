@@ -17,9 +17,7 @@
 
 <div id="course-wrapper">
 	<% if @course %>
-		<%= form_with model: @score, id: "course-layout" do |s| %>
-			Hole: <%= render "hole" %>
-		<% end %>
+		<%= render "form" %>
 	<% end %>
 </div>
 
