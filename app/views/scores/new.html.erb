@@ -3,8 +3,6 @@
 <%= render 'monitor' %>
 
 
-<%# For now, lets use 2 forms. One course form, and one score form %>
-
 <div>
 	<%= form_with scope: "course", method: :GET do |c| %>
 		<%= c.collection_select :id, Course.order(:name), :id, :name %>

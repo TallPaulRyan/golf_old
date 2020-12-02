@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
 
 	def new
 		@course = Course.new
+		@course_details = Course.course_details.build
 	end
 
 
@@ -19,10 +20,13 @@ class CoursesController < ApplicationController
 
 	def create
 		@course = Course.new(course_params)
-		if @course.save
-			redirect_to courses_path
-		else
-			render 'new'
+		respond_to do |format|
+			if @course
+				format.html { render 'new'}
+				format.js
+			else
+				format.html { render 'index'}
+			end
 		end
 	end
 
@@ -33,4 +37,7 @@ class CoursesController < ApplicationController
 			params.require(:course).permit(:name,:holes,:par)
 		end
 
+		def course_details_params
+			params.require(:course).require(:course_details).permit(:hole_number,:hole_par)
+		end
 end

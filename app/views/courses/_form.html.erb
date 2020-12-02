@@ -1,0 +1,8 @@
+<%= form_with model: @course, id: "course-form" do |c| %>
+	<%= c.fields_for :course_details do |cd| %>
+		<% for i in 0..@course.holes %>
+			<%= cd.label :hole %><br>
+			<%= cd.text_field :score %>
+		<% end %>
+	<% end %>
+<% end %>

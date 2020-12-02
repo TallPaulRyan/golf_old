@@ -12,6 +12,6 @@
 		f.removeChild(f.firstChild)
 	}
 
-	document.querySelector('#course-wrapper').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "hole") %>');
+	document.querySelector('#details-wrapper').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "form") %>');
 	<%# document.querySelector('#course-layout').reset(); %>
 <% end %>
