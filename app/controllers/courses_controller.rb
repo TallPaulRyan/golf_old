@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
 
-
 	def index
 		@courses = Course.all
 	end
@@ -11,23 +10,29 @@ class CoursesController < ApplicationController
 
 	def new
 		@course = Course.new
-		@course_details = Course.course_details.build
 	end
 
+	def initialize_course_details
+		# We'd like to handle the ajax subission here.
+		# Once the course is selected, we will generate course detail objects
+		# 	to populate the dynamically generated form
+		@course = Course.new(course_params)
+		respond_to do |format|
+			if @course
+				(@course.holes).times { @course.course_details.build }
+				# format.html { render 'new'}
+				# binding.pry
+				format.js
+			else
+				format.html { render 'new'}
+			end
+		end
+	end
 
 	def edit
 	end
 
 	def create
-		@course = Course.new(course_params)
-		respond_to do |format|
-			if @course
-				format.html { render 'new'}
-				format.js
-			else
-				format.html { render 'index'}
-			end
-		end
 	end
 
 

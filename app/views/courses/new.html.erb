@@ -3,7 +3,7 @@
 
 <%= render 'monitor' %>
 
-<%= form_with model: @course do |f| %>
+<%= form_with model: @course, url: initialize_course_details_path do |f| %>
 	Course Name: <%= f.text_field :name %><br>
 	# of holes: <%= f.number_field :holes %><br>
 	Course Par: <%= f.number_field :par %>

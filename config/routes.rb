@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   end
 
 
+  scope :courses, via: [:get, :post] do
+    match 'initializeCourseDetails' => 'courses#initialize_course_details', as: :initialize_course_details 
+  end
+
   # get '/scores/index' => 'scores#index' #scores#index
   # get '/scores/new' => 'scores#new' #scores#new
   # post '/scores' => 'scores#create' #scores#create

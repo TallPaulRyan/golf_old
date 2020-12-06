@@ -1,8 +1,11 @@
+<h1> Test Result Header </h1>
+
 <%= form_with model: @course, id: "course-form" do |c| %>
 	<%= c.fields_for :course_details do |cd| %>
-		<% for i in 0..@course.holes %>
-			<%= cd.label :hole %><br>
-			<%= cd.text_field :score %>
-		<% end %>
+		<%= cd.label :hole_number %>
+		<%= cd.text_field :hole_number %><br>
+		<%= cd.label :hole_par %>
+		<%= cd.text_field :hole_par %><br>
 	<% end %>
+	<%= c.submit %>
 <% end %>

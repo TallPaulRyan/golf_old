@@ -26,7 +26,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'pry', '~> 0.13.1'
+gem 'pry'
+gem 'pry-remote'
+gem 'pry-nav'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
