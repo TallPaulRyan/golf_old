@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 		# We'd like to handle the ajax subission here.
 		# Once the course is selected, we will generate course detail objects
 		# 	to populate the dynamically generated form
+		binding.pry
 		@course = Course.new(course_params)
 		respond_to do |format|
 			if @course
@@ -33,6 +34,14 @@ class CoursesController < ApplicationController
 	end
 
 	def create
+		binding.pry
+		@course = Course.new(course_details_params)
+
+		if @course.save!
+			redirect_to root_path
+		else
+			redirect_to new_course_path
+		end
 	end
 
 
@@ -43,6 +52,6 @@ class CoursesController < ApplicationController
 		end
 
 		def course_details_params
-			params.require(:course).require(:course_details).permit(:hole_number,:hole_par)
+			params.require(:course).require(:course_details_attributes).permit(course_details_attributes: [:hole_number, :hole_par])
 		end
 end

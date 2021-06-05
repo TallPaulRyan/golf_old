@@ -1,4 +1,5 @@
 class Course < ApplicationRecord
+	# each row in course_details is a single hole
 	has_many :course_details, dependent: :destroy
 	has_many :scores
 
